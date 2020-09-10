@@ -1,0 +1,106 @@
+.showcase {
+  height: 550px;
+  text-align: center;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.showcase .hike-img {
+  background: url("../../components/img/streets.jpg") no-repeat;
+  background-position: center;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.9;
+  transition: all 1000ms;
+}
+
+.showcase .hike-img:hover {
+  transition: all 1000ms;
+  opacity: 1;
+}
+
+.intro {
+  margin: auto;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: rgba(212, 161, 161, 1);
+  opacity: 1;
+  margin: -100px 0 30px 0;
+}
+
+#hike-search,
+#search-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+#hike-search {
+    border: none;
+}
+
+#search-btn {
+    background-color: rgba(206, 247, 232, 1);
+    border: none;
+    color: rgba(84, 84, 84, 1);
+    font-weight: bold;
+    border-left: 1px solid;
+}
+
+/**
+ * Firefox Fix
+ * Without that the submit button will be too high.
+ */
+#search-btn::-moz-focus-inner { 
+    border: 0;
+}
+
+.registration-sect {
+  display: grid;
+  grid-template-rows: repeat(2, 0.5fr);
+  max-width: 70%;
+  margin: 50px auto 0 auto;
+  grid-gap: 20px;
+}
+
+p {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.register {
+  line-height: 1.8em;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.sign-up-btn {
+  width: 35%;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: auto;
+  font-size: 1em;
+  background-color: rgba(206, 247, 232, 1);
+  color: rgba(84, 84, 84, 1);
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Header from '../Header/Header';
+import LandingPageRoute from '../../routes/LandingPageRoute/LandingPageRoute';
+import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
+import Login from '../Login/Login';
+import './App.css';
+
+class App extends Component {
+
+  render() {
+    return (
+      <>
+        <Header />
+        <main className='main-sect'>
+          <Switch>
+            <Route exact path={'/'} component={LandingPageRoute} />
+            <Route path={'/register'} component={RegistrationRoute} />
+            <Route path={'/login'} component={Login} />
+          </Switch>
+        </main>
+      </>
+    )
+  }
+}
+
+export default App;
