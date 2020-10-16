@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import './LandingPageRoute.css';
+import Results from '../Results/Results';
 
 class LandingPageRoute extends Component {
   state = {
     search: '',
-    searchTouch: false
+    searchTouch: false,
+    redirect: false
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      search: e.target.value
     })
   }
 
   handleSearchTouch = e => {
     this.setState({
-      searchTouch = true
+      searchTouch: true
     })
   }
 
@@ -25,7 +27,10 @@ class LandingPageRoute extends Component {
     const searchQuery = {
       search: this.state.search
     }
-    
+    if(searchQuery) {
+      this.props.history.push('results')
+      return <Results query={searchQuery} />
+    }
   }
 
   render() {
@@ -38,19 +43,23 @@ class LandingPageRoute extends Component {
               Find your next journey
             </div>
 
-            <form className='hike-search-form'>
+            <form className='hike-search-form' onSubmit={this.handleSubmit}>
               <div>
-              <input id="hike-search" type="text" placehoder='Enter a location or trail' />
+              <input 
+                id="hike-search" 
+                type="text" 
+                placeholder="Enter a location or trail" 
+                onChange={(e) => {this.handleChange(e); this.handleSearchTouch(e)}} />
               <button id="search-btn" type="submit">Search</button>
               </div>
             </form>
-
+            {/* <button className="nearby-btn" type="submit">Nearby Trails</button> */}
           </div>
         </section>
 
         <section className="registration-sect">
           <div className="register">
-            <p>Powered by Hiking Project</p>
+            <p>"Anywhere is within walking distance."</p>
             Finding your solace is only a hike away.  Search for trail details, plan for future hiking trips, or keep track of your favorite trails.  Whatever you need, Take-A-Hike has you covered.
           </div>
           

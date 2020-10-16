@@ -58,6 +58,11 @@
     border-left: 1px solid;
 }
 
+#search-btn:hover {
+  cursor: pointer;
+}
+
+
 /**
  * Firefox Fix
  * Without that the submit button will be too high.
