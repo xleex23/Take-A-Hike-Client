@@ -28,8 +28,10 @@ class LandingPageRoute extends Component {
       search: this.state.search
     }
     if(searchQuery) {
-      this.props.history.push('results')
-      return <Results query={searchQuery} />
+      this.props.history.push({
+        pathname: '/results',
+        query: searchQuery
+      })
     }
   }
 
