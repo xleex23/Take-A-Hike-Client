@@ -16,10 +16,28 @@ import './Results.css';
 
 
 export default function Results() {
-  
+
   const location = useLocation();
   const history = useHistory();
   const searchTerm = location.query;
+  let map_sect;
+
+  const initialize = () => {
+    const center = new window.google.maps.LatLng(searchTerm.lat, searchTerm.lng)
+    let map_sect = new window.google.maps.Map
+    (document.getElementById("map_area"), {
+      center: center,
+      zoom: 13
+    })
+    const request = {
+      query: "hiking trail",
+      types: ['trail']
+    }
+    let service = new window.google.maps.places.PlacesService(map_sect)
+    service.nearbySearch(request, callback)
+  }
+
+  window.google.maps.event.addDomListener(window, 'load', initialize())
   
   const libraries = ["places"];
 
@@ -39,14 +57,13 @@ export default function Results() {
     zoomControl: true
   };
 
-  const request = {
-    query: "hiking trail",
-    types: ['trail']
-  }
+  // const request = {
+  //   query: "hiking trail",
+  //   types: ['trail']
+  // }
 
-  let map;
-  let service = new window.google.maps.places.PlacesService(map)
-  service.nearbySearch(request, callback())
+  // let service = new window.google.maps.places.PlacesService(map)
+  // service.nearbySearch(request, callback())
 
   const callback = (results, status) => {
     if(status == google.maps.places.PlacesServiceStatus.OK) {
@@ -59,7 +76,7 @@ export default function Results() {
   const createMarker = (place) => {
     let placeLoc = place.geometry.location;
     let marker = new window.google.maps.Marker({
-      map: map,
+      map: map_sect,
       position: place.geometry.location
     })
   }
@@ -80,7 +97,8 @@ export default function Results() {
   return (
   <div>
     <button className="new-search-btn" onClick={newSearch}>New Search</button>
-    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={12} center={mapCenter} options={options}></GoogleMap>
+    {/* <GoogleMap mapContainerStyle={mapContainerStyle} zoom={12} center={mapCenter} options={options}></GoogleMap> */}
+    <div id="map_area"></div>
   </div>
   );
 };

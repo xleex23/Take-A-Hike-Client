@@ -19,3 +19,7 @@
   color: rgba(52, 24, 24, 1);
   transition: ease 0.15s;
 }
+
+#map_area {
+  height: 100%;
+}
